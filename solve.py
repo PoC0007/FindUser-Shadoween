@@ -2,7 +2,7 @@ from pwn import *
 
 # Dirección y puerto a donde te quieres conectar
 ip = '35.188.115.217'  # Cambia esto por tu IP local o la IP donde está el servicio
-port = 64534       # Cambia esto por el puerto corrrecto
+port = 65534       # Cambia esto por el puerto corrrecto
 
 # Crear la conexión remota al servicio en el puerto 4444
 p = remote(ip, port)
